@@ -1,4 +1,4 @@
-// round2D( will round the edges of a 2D shape 
+// round2D() will round the edges of a 2D child shape.
 
 module round2D(x=2,fn=10)
 {
@@ -27,8 +27,6 @@ intersection()
 color("red")
 round2D(2,10)
 shape();
-
-
 
 linear_extrude(height = 10)
 color("white",0.2)
