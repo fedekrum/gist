@@ -2,6 +2,7 @@
 
 COMP_PARAMS=`2>&1 nginx -V | grep "configure arguments: "`
 COMP_PARAMS="${COMP_PARAMS/configure arguments: }"
+echo $COMP_PARAMS
 
 # Check current PageSpeed version at https://www.modpagespeed.com/doc/release_notes
 NPS_VERSION=1.13.35.2 <># e.g. NPS_VERSION=1.13.35.2
@@ -27,19 +28,7 @@ cd $DIR
 wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 tar -xzf nginx-${NGINX_VERSION}.tar.gz
 cd nginx-${NGINX_VERSION}/
-
-echo #######################################
-echo Execute this at the console:
-echo.
-echo cd $DIR/nginx-${NGINX_VERSION}
-echo
-echo ./configure $COMP_PARAMS --add-dynamic-module=$DIR/incubator-pagespeed-ngx-$NPS_FULL
-echo
-echo make
-echo
-echo cp $DIR/nginx-${NGINX_VERSION}/objs/ngx_pagespeed.so /etc/nginx/modules/
-echo
-echo service nginx restart
-
-# What seams not to work from within the script
-#sudo ./configure $COMP_PARAMS --add-dynamic-module=$DIR/incubator-pagespeed-ngx-$NPS_FULL
+eval "./configure $COMP_PARAMS --add-dynamic-module=$DIR/incubator-pagespeed-ngx-$NPS_FULL"
+make
+cp $DIR/nginx-${NGINX_VERSION}/objs/ngx_pagespeed.so /etc/nginx/modules/
+service nginx restart
