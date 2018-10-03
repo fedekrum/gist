@@ -6,7 +6,7 @@ NPS_VERSION=1.13.35.2   # e.g. NPS_VERSION=1.13.35.2
 NPS_RELEASE=stable      # stable or beta ONLY
 
 # Check current NGINX version at http://nginx.org/en/download.html
-NGINX_VERSION=1.15.5.   # e.g. NGINX_VERSION=1.15.5
+NGINX_VERSION=1.15.5   # e.g. NGINX_VERSION=1.15.5
 # -------- START CONFIG --------
 
 # -------- START PROCESS --------
@@ -25,12 +25,12 @@ unzip -qq v${NPS_VERSION}.zip
 nps_dir=$(find . -name "*pagespeed-ngx-${NPS_VERSION}" -type d); cd "$nps_dir"
 NPS_RELEASE_NUMBER=${NPS_VERSION/beta}; NPS_RELEASE_NUMBER=${NPS_RELEASE_NUMBER/stable/}
 psol_url=https://dl.google.com/dl/page-speed/psol/${NPS_RELEASE_NUMBER}.tar.gz
-[ -e ./scripts/format_binary_url.sh ] && psol_url=$(./scripts/format_binary_url.sh PSOL_BINARY
-wget -q ${psol_url}
+[ -e ./scripts/format_binary_url.sh ] && psol_url=$(./scripts/format_binary_url.sh PSOL_BINARY_URL)
+wget  ${psol_url}
 tar -xzf $(basename ${psol_url})  # extracts to psol/
 cd $DIR
-wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-tar -xzf nginx-${NGINX_VERSION}.tar.gz
+wget  http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
+tar -vxzf nginx-${NGINX_VERSION}.tar.gz
 cd nginx-${NGINX_VERSION}/
 eval "./configure $COMP_PARAMS --add-dynamic-module=$DIR/incubator-pagespeed-ngx-$NPS_VERSION"
 make
