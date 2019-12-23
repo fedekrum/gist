@@ -11,6 +11,6 @@ With this affiliate program link, they will instantly give you `10 u$ credit in 
 
 After login to the droplet for the first time, copy the line bellow and execute it in the terminal
 
-    curl -O https://raw.githubusercontent.com/FastDigitalOceanDroplets/VestaCP/master/vestacp.sh && bash vestacp.sh
+    curl -O https://raw.githubusercontent.com/fedekrum/gist/master/Digital%20Ocean%20Ubuntu%20Desktop%20with%20VNC/setup.bash && bash setup.sh
 
 Please bring to my attention on any issue you could find.
