@@ -42,3 +42,6 @@ echo "1) connect to SSH this way"
 echo "   ssh -L 5901:127.0.0.1:5901 root@YOUR_IP"
 echo "2) Conect via VNC client to localhost:1"
 reboot
+
+# How to setup VirtualGL and TurboVNC on Ubuntu.md
+# https://gist.github.com/cyberang3l/422a77a47bdc15a0824d5cca47e64ba2
